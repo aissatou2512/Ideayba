@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IDEAYBA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--b:#800F2F;--bd:#590D22;--r:#E8B4BC;--rl:#F7E4E7;--bg:#FFF9F5;--w:#fff;--g:#74666A;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:#FFF9F5;color:#3a1a24;font:15px/1.5 'DM Sans',system-ui,sans-serif}
+h1,h2,h3,.logo{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;margin:0}
+.sb{position:fixed;left:0;top:env(safe-area-inset-top,0px);bottom:0;width:250px;background:var(--bd);color:var(--bg);padding:24px 16px;display:flex;flex-direction:column;gap:6px;z-index:20;transition:transform .2s;overflow-y:auto}
+.logo{font-size:30px;letter-spacing:.18em;padding:0 8px 18px;color:var(--rl)}
+.logo small{display:block;font:400 11px 'DM Sans';letter-spacing:.12em;color:var(--r);margin-top:2px}
+.nv{background:none;border:0;color:var(--bg);text-align:left;padding:10px 12px;border-radius:10px;font:inherit;cursor:pointer;display:flex;gap:10px;opacity:.85}
+.nv:hover{background:#ffffff14}.nv.on{background:var(--b);opacity:1}
+.new{background:var(--r);color:var(--bd);border:0;border-radius:12px;padding:12px;font:600 15px 'DM Sans';cursor:pointer;margin:6px 0 12px}
+.new:hover{background:var(--rl)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;margin-left:250px;padding:14px 28px;background:#FFF9F5ee;backdrop-filter:blur(6px);display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--rl)}
+.top input{flex:1;max-width:520px;padding:10px 14px;border:1px solid var(--r);border-radius:12px;background:#fff;font:inherit}
+.burger{display:none;background:var(--b);color:#fff;border:0;border-radius:10px;padding:8px 12px;font-size:18px}
+main{margin-left:250px;padding:26px 28px 60px;max-width:1150px}
+h1{font-size:34px;color:var(--bd)}h1+p{color:var(--g);margin:2px 0 20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:22px}
+.st{background:#fff;border:1px solid var(--rl);border-radius:14px;padding:14px 16px}
+.st b{display:block;font:600 32px 'Cormorant Garamond',serif;color:var(--b)}.st span{color:var(--g);font-size:13px}
+.cap{background:var(--rl);border-radius:16px;padding:16px;margin-bottom:24px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.cap h3{width:100%;font-size:22px;color:var(--bd)}.cap input{flex:1;min-width:180px}
+input,select,textarea{font:inherit;color:inherit;padding:10px 12px;border:1px solid var(--r);border-radius:10px;background:#fff;width:100%}
+input:focus,select:focus,textarea:focus,.ed:focus{outline:2px solid var(--b);outline-offset:0}
+.cap select{width:auto}
+.btn{background:var(--b);color:#fff;border:0;border-radius:10px;padding:10px 16px;font:600 14px 'DM Sans';cursor:pointer}
+.btn:hover{background:var(--bd)}.btn.o{background:#fff;color:var(--b);border:1px solid var(--r)}.btn.o:hover{background:var(--rl)}.btn.d{background:#fff;color:#a4162f;border:1px solid #e4a3ae}
+.sec{margin:26px 0 10px;display:flex;justify-content:space-between;align-items:center}.sec h2{font-size:24px;color:var(--bd)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}.grid.list{grid-template-columns:1fr}
+.card{background:#fff;border:1px solid var(--rl);border-radius:14px;padding:16px;cursor:pointer;transition:.15s;border-top:3px solid var(--r)}
+.card:hover{box-shadow:0 6px 20px #590d2214;transform:translateY(-2px)}
+.ch{display:flex;justify-content:space-between;align-items:center}.tg{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--g)}
+.star{background:none;border:0;font-size:20px;color:var(--b);cursor:pointer}
+.card h3{font-size:22px;margin:4px 0;color:var(--bd)}.card p{margin:0 0 10px;color:var(--g);font-size:14px}
+.meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.bd{background:var(--rl);color:var(--b);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:500}.bd.p{background:var(--r);color:var(--bd)}.bd.c{background:#fff;border:1px solid var(--r)}.dt{margin-left:auto;font-size:12px;color:var(--g)}
+.emp{background:#fff;border:1px dashed var(--r);border-radius:14px;padding:26px;text-align:center;color:var(--g)}
+.fl{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}.fl select{width:auto;min-width:130px}
+.mo{position:fixed;inset:0;background:#590d2299;display:none;align-items:flex-start;justify-content:center;padding:4vh 12px;overflow-y:auto;z-index:50}.mo.on{display:flex}
+.md{background:var(--bg);border-radius:18px;padding:24px;width:100%;max-width:720px}
+.md h2{font-size:28px;color:var(--bd);margin-bottom:12px}
+label,.lb{display:block;font-size:13px;font-weight:600;color:var(--g);margin:12px 0 4px}label input,label select,label textarea{margin-top:4px;font-weight:400;color:#3a1a24}
+.tb{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}.tb button{background:var(--rl);border:0;border-radius:8px;padding:6px 10px;cursor:pointer;color:var(--bd);font:500 13px 'DM Sans'}
+.ed{min-height:260px;background:#fff;border:1px solid var(--r);border-radius:10px;padding:14px}.ed h2{font-size:26px}.ed h3{font-size:20px}
+.act{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.act .sp{flex:1}
+.ch3{display:grid;gap:10px}.ch3 button{text-align:left;background:#fff;border:1px solid var(--r);border-radius:14px;padding:16px;cursor:pointer;font:inherit}.ch3 button:hover{background:var(--rl)}.ch3 b{font:600 22px 'Cormorant Garamond',serif;color:var(--b);display:block}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--bd);color:#fff;padding:10px 18px;border-radius:24px;opacity:0;transition:.25s;pointer-events:none;z-index:99}.toast.on{opacity:1}
+.box{background:#fff;border:1px solid var(--rl);border-radius:14px;padding:18px;margin-bottom:14px}.box h3{font-size:22px;color:var(--bd);margin-bottom:6px}.box p{color:var(--g);margin:4px 0 10px}
+.warn{background:var(--rl);border-left:4px solid var(--b);padding:10px 14px;border-radius:8px;margin-bottom:14px}
+small.d{color:var(--g)}
+
+.ph{background:#fff;border:1px solid var(--rl);border-radius:18px;padding:26px;margin:14px 0;border-top:4px solid var(--r)}.ph h1{font-size:40px;margin:8px 0}.pd{color:var(--g);font-size:16px;margin:0 0 8px}
+.etb{position:sticky;top:calc(env(safe-area-inset-top,0px) + 62px);z-index:9;background:#fffffff2;border:1px solid var(--rl);border-radius:14px;padding:8px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.etb>button{min-width:40px;min-height:40px;background:var(--rl);border:0;border-radius:10px;color:var(--bd);cursor:pointer;font:600 15px 'DM Sans'}.etb>.btn{background:var(--b);color:#fff;padding:0 16px}
+.addw{position:relative}.am{display:none;position:absolute;top:110%;left:0;background:#fff;border:1px solid var(--r);border-radius:12px;padding:6px;box-shadow:0 10px 30px #590d2222;min-width:210px;z-index:12}.am.on{display:block}.am button{display:block;width:100%;text-align:left;background:none;border:0;padding:12px;border-radius:8px;font:inherit;cursor:pointer}.am button:hover{background:var(--rl)}
+.bk{padding:8px 10px;margin:6px 0;border-radius:12px;border:1px solid transparent}.bk:hover,.bk:focus-within{border-color:var(--rl);background:#fff}.bk.ov{border-color:var(--b)}
+.bc{display:flex;gap:4px;justify-content:flex-end;margin-bottom:4px;opacity:.4}.bk:hover .bc,.bk:focus-within .bc{opacity:1}.bc button,.hd{background:var(--rl);border:0;border-radius:8px;min-width:36px;min-height:36px;color:var(--bd);cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.hd{cursor:grab}
+.ed.tx{min-height:48px;border:0;background:transparent;padding:6px 8px;font-size:16px;line-height:1.7}.ed.tx:empty:before{content:attr(data-ph);color:var(--g)}.ed blockquote{border-left:3px solid var(--r);margin:8px 0;padding:2px 14px;color:var(--g);font-style:italic}.ed a{color:var(--b)}
+.co{border-radius:14px;padding:14px 16px;border-left:5px solid var(--b);background:var(--rl)}.co.warn{background:#f3d5d9;border-color:var(--bd)}.co.goal{background:#fff;border:1px solid var(--r);border-left:5px solid var(--b)}.co.info{background:#fbeff1;border-color:var(--g)}
+.co select{width:auto;border:0;background:transparent;font-weight:600;color:var(--bd);padding:2px}.co .ed{border:0;background:transparent;padding:4px 0;min-height:30px}
+.tw{overflow-x:auto;border:1px solid var(--rl);border-radius:12px;background:#fff}table{border-collapse:collapse;width:100%;min-width:480px}th input,td input{border:0;border-radius:0;background:transparent;padding:10px}th{background:var(--rl)}th input{font-weight:600;color:var(--bd)}td,th{border-bottom:1px solid var(--rl)}.cx td,.rx{width:34px;text-align:center}.cx button,.rx button,.ci button{background:none;border:0;color:var(--g);cursor:pointer;min-height:32px;min-width:32px}
+.tt{font:600 22px 'Cormorant Garamond',serif;border:0;background:transparent;margin-bottom:6px;color:var(--bd);padding-left:0}
+figure{margin:0;text-align:center}figure img{max-width:100%;border-radius:12px;border:1px solid var(--rl)}.cp{text-align:center;border:0;background:transparent;color:var(--g);font-style:italic}
+.drop{display:block;border:2px dashed var(--r);border-radius:12px;padding:22px;text-align:center;color:var(--b);cursor:pointer;background:var(--rl)}
+.ci{display:flex;gap:8px;align-items:center;margin:4px 0}.ci input[type=checkbox]{width:22px;height:22px;accent-color:var(--b);flex:none}.ci input.dn{text-decoration:line-through;color:var(--g)}
+.lk{display:grid;gap:6px;border:1px solid var(--r);border-radius:12px;padding:14px;background:#fff}.fi{padding:10px}.dv{border:0;border-top:2px solid var(--r);margin:14px 0}
+.bk,.bk:hover,.bk:focus-within{border-color:transparent!important;background:transparent!important;padding:2px 0;margin:4px 0}.bc{display:none}
+#bl{background:#fff;border:1px solid var(--rl);border-radius:12px;padding:36px 44px;min-height:60vh;box-shadow:0 4px 24px #590d2210}
+.cmn{position:fixed;z-index:70;background:#fff;border:1px solid var(--r);border-radius:12px;padding:6px;box-shadow:0 10px 30px #590d2233;min-width:220px;display:none}.cmn.on{display:block}.cmn button{display:block;width:100%;text-align:left;background:none;border:0;padding:11px 12px;border-radius:8px;font:inherit;cursor:pointer}.cmn button:hover{background:var(--rl)}.cmn button.x{color:#a4162f}
+@media(max-width:860px){#bl{padding:20px 14px}}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0 28px}.til{background:#fff;border:1px solid var(--rl);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:4px;align-items:flex-start;cursor:pointer;font:inherit;text-align:left;transition:.15s}.til:hover{border-color:var(--r);transform:translateY(-2px)}.til .tii{font-size:26px}.til b{font:600 26px 'Cormorant Garamond',serif;color:var(--b)}.til span:last-child{color:var(--g);font-size:13px}
+.pbar{height:8px;border-radius:6px;background:var(--rl);overflow:hidden;margin:8px 0}.pbar>i{display:block;height:100%;background:var(--b)}
+.gcard{border-top-color:var(--b)}.gcov{width:100%;height:110px;object-fit:cover;border-radius:10px;margin-bottom:8px;background:var(--rl)}
+.soon{background:var(--rl);border-radius:12px;padding:10px 14px;margin-bottom:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}.soon b{color:var(--bd)}
+@media(max-width:860px){.sb{transform:translateX(-105%)}.sb.open{transform:none;box-shadow:0 0 40px #0006}.top,main{margin-left:0}.burger{display:block}main{padding:20px 16px 60px}.top{padding:10px 16px}}
+.sst{margin-left:auto;font-size:13px;color:var(--g);white-space:nowrap}.sst.ok{color:#2e7d4f}.sst.er{color:#a4162f;cursor:pointer;font-weight:600}
+#gate{display:none;position:fixed;inset:0;z-index:100;background:var(--bg);align-items:center;justify-content:center;padding:20px}#gate.on{display:flex}.gc{background:#fff;border:1px solid var(--rl);border-radius:20px;padding:36px;max-width:420px;width:100%;text-align:center}.gc .logo{color:var(--bd);padding-bottom:12px}.gc h2{font-size:28px;color:var(--bd)}.gc p{color:var(--g)}.gc p.er{color:#a4162f}
+.me{margin-top:auto;padding:12px 8px 0;border-top:1px solid #ffffff22;font-size:13px;color:var(--rl)}.me small{display:block;color:var(--r);margin-bottom:6px;word-break:break-all}
+.gc form{text-align:left;margin:12px 0}.gc a{color:var(--b);cursor:pointer;text-decoration:underline}.gc p.ok{color:#2e7d4f}.gc label{font-size:13px}
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script><script src="config.js"></script></head><body>
+<aside class="sb" id="sb"><div class="logo">IDEAYBA<small>Mon espace d'idées</small></div>
+<button class="new" onclick="chooser()">+ Nouvelle idée</button><div id="nav"></div><div class="me" id="me"></div></aside>
+<div class="top"><button class="burger" onclick="$('#sb').classList.toggle('open')" aria-label="Menu">☰</button><input id="q" type="search" placeholder="Rechercher dans mes idées, notes et business plans…" oninput="F.q=this.value;if(view==='dash'||view==='set'||view==='proj')view='all';render()"><span id="sst" class="sst" onclick="if(this.classList.contains('er'))retry()"></span></div>
+<main id="main"></main><div class="mo" id="mo" onclick="if(event.target===this)closeM()"></div><div class="toast" id="toast"></div><div class="cmn" id="cmn"></div><div id="gate"></div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const K='ideayba.v1',uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7),now=()=>new Date().toISOString();
+const ST={project:['Idée','En étude','En préparation','En développement','Lancé','En pause','Abandonné'],small:['Nouvelle','À creuser','Retenue','Écartée'],tech:['Vague','À explorer','En test','Validée'],goal:['En cours','Atteint','En pause','Abandonné'],invest:['Idée','À étudier','Planifié','En cours','Réalisé','Abandonné']};
+const DOM=['Intelligence artificielle','Développement web','Développement logiciel','Cybersécurité','Réseaux','Linux et systèmes','Applications mobiles','SaaS et outils numériques','Automatisation','Technologies innovantes','Autre'],PR=['Basse','Moyenne','Haute'];
+const TY={goal:{l:'Objectif de vie',f:[]},
+project:{l:'Projet & Business',f:[['desc','Description complète','a'],['problem','Problème identifié','a'],['solution','Solution proposée','a'],['target','Public cible','t'],['model','Modèle économique','a'],['budget','Budget estimé','t'],['cat','Catégorie','t'],['status','Statut','s',ST.project],['links','Liens et ressources (un par ligne)','a'],['notes','Notes personnelles','a'],['plan','Business plan','p']]},
+tech:{l:'Idée SaaS — Tech',f:[['desc','L\'idée','a'],['problem','Problème','a'],['solution','Solution','a'],['target','Utilisateurs ciblés','t'],['model','Modèle économique','t'],['status','Statut','s',ST.tech],['potential','Potentiel','s',PR],['links','Liens','a'],['notes','Notes','a']]},
+small:{l:'Idée vive',f:[['desc','Courte description','a'],['cat','Catégorie','t'],['priority','Priorité','s',PR],['status','Statut','s',ST.small],['notes','Notes','a']]},
+invest:{l:'Investissement futur',f:[['desc','Description','a'],['cat','Type d\'investissement','t'],['amount','Montant visé','t'],['deadline','Échéance','t'],['status','Statut','s',ST.invest],['links','Liens et ressources','a'],['notes','Notes','a']]}};
+const NAV=[['dash','◈','Tableau de bord'],['goal','🎯','Mes objectifs de vie'],['project','💼','Mes projets & Business'],['tech','💻','Idées de SaaS — Tech'],['small','💡','Mes idées vives'],['invest','💶','Investissements futurs'],['fav','★','Mes favoris'],['arch','▣','Mes archives'],['set','⚙','Paramètres']];
+let S={items:[]},view='dash',mode='grid',F={q:'',type:'',cat:'',status:'',pri:'',date:''},cur={},mem=false;
+function clean(h){const t=document.createElement('template');t.innerHTML=String(h||'');t.content.querySelectorAll('*').forEach(e=>{if(!/^(H2|H3|P|UL|OL|LI|B|I|U|STRONG|EM|DIV|BR|SPAN|BLOCKQUOTE|A)$/.test(e.tagName))e.remove();else{const h=e.tagName==='A'&&e.getAttribute('href');[...e.attributes].forEach(a=>e.removeAttribute(a.name));if(h&&/^https?:\/\//i.test(h))e.setAttribute('href',h)}});return t.innerHTML}
+function mig(x){if(x.type==='tech'&&(x.domain||x.techno||x.feature)&&x.problem===undefined){const notes=[x.notes,[x.techno&&'Technologie : '+x.techno,x.feature&&'Fonctionnalité : '+x.feature].filter(Boolean).join('\n')].filter(Boolean).join('\n\n');const cat=x.cat||x.domain||'';x={...x,cat,notes,problem:'',solution:'',target:'',model:'',potential:x.priority||'Moyenne'};delete x.domain;delete x.techno;delete x.feature}
+if(x.type!=='project')return x;const T={text:1,image:1,table:1,callout:1,checklist:1,link:1,file:1,divider:1};
+if(!Array.isArray(x.blocks)){const bl=[],add=h=>bl.push({id:uid(),type:'text',html:h});if(x.plan)add(clean(x.plan));[['problem','Problème identifié'],['solution','Solution proposée'],['target','Public cible'],['model','Modèle économique'],['budget','Budget estimé'],['links','Liens et ressources'],['notes','Notes personnelles']].forEach(([k,l])=>x[k]&&add(`<h2>${l}</h2><p>${esc(x[k]).replace(/\n/g,'<br>')}</p>`));x.blocks=bl;['plan','problem','solution','target','model','budget','links','notes'].forEach(k=>delete x[k])}
+else x.blocks=x.blocks.filter(b=>b&&T[b.type]).map(b=>({...b,id:String(b.id||uid()).replace(/[^\w-]/g,''),...(b.html!=null?{html:clean(b.html)}:{}),...(b.type==='image'?{src:/^data:image\//.test(b.src||'')?b.src:''}:{}),...(b.type==='table'?{rows:Array.isArray(b.rows)&&b.rows.length&&b.rows.every(r=>Array.isArray(r)&&r.length&&r.length===b.rows[0].length)?b.rows:[['','']]}:{}),...(b.type==='checklist'?{items:Array.isArray(b.items)?b.items.filter(i=>i&&typeof i==='object'):[]}:{})}));return x}
+const btxt=x=>((x.blocks||[]).map(b=>[b.html,b.title,b.caption,b.url,b.desc,b.name,(b.rows||[]).flat().join(' '),(b.items||[]).map(i=>i.t).join(' ')].join(' ')).join(' ')+' '+(x.plan||'')+' '+((x.steps||[]).map(s=>s.t).join(' '))).replace(/<[^>]*>/g,' ');
+function norm(a){return(Array.isArray(a)?a:[]).filter(x=>x&&typeof x.title==='string'&&TY[x.type]).map(x=>mig({...x,id:String(x.id||uid()).replace(/[^\w-]/g,''),plan:clean(x.plan),fav:!!x.fav,arch:!!x.arch,created:x.created||now(),updated:x.updated||x.created||now()})) }
+function load(){try{const r=localStorage.getItem(K);if(r)S.items=norm(JSON.parse(r).items)}catch(e){mem=true}}
+const sb=window.supabase&&window.CFG&&CFG.url&&!/VOTRE/.test(CFG.url+CFG.key)?supabase.createClient(CFG.url,CFG.key):null;
+let U=null,snap=new Map(),busy=false,again=false,dirty=false;
+const setSt=(t,c)=>{const e=$('#sst');e.textContent=t;e.className='sst '+c};
+const row=x=>({user_id:U.id,id:x.id,type:x.type,title:x.title||'',favorite:!!x.fav,archived:!!x.arch,data:x,created_at:vd(x.created),updated_at:vd(x.updated)});
+function save(){if(!U)return;dirty=true;clearTimeout(save.t);setSt('Enregistrement…','w');save.t=setTimeout(sync,600)}
+const paths=a=>new Set(a.flatMap(x=>[...(x.blocks||[]).map(b=>b.path),x.cover&&x.cover.path].filter(Boolean))),vd=d=>isNaN(Date.parse(d))?new Date().toISOString():d;let refd=new Set();
+async function sync(){if(busy){again=true;return}busy=true;setSt('Enregistrement…','w');try{const cur=new Map(S.items.map(x=>[x.id,JSON.stringify(x)])),up=S.items.filter(x=>snap.get(x.id)!==cur.get(x.id)),del=[...snap.keys()].filter(id=>!cur.has(id)),np=paths(S.items);
+for(let k=0;k<up.length;k+=25){const ch=up.slice(k,k+25),{error}=await sb.from('ideas').upsert(ch.map(row),{onConflict:'user_id,id'});if(error)throw error;ch.forEach(x=>snap.set(x.id,cur.get(x.id)))}
+if(del.length){const{error}=await sb.from('ideas').delete().in('id',del);if(error)throw error;del.forEach(id=>snap.delete(id))}
+dirty=false;setSt('Enregistré ✓','ok');const gone=[...refd].filter(p=>!np.has(p));refd=np;if(gone.length)sb.storage.from(BK).remove(gone).then(r=>r&&r.error&&console.error(r.error))}catch(e){console.error(e);setSt('⚠ Échec de l\'enregistrement — cliquer pour réessayer','er')}busy=false;if(again){again=false;sync()}}
+const retry=()=>moveImgs().then(ok=>ok&&sync());
+addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
+let REC=/type=recovery/.test(location.hash),em='';const HE=/error_description=/.test(location.hash);
+const tr=m=>({'Invalid login credentials':'E-mail ou mot de passe incorrect.','Email not confirmed':'Adresse e-mail pas encore confirmée : cliquez sur le lien reçu par e-mail.','Signups not allowed for this instance':'Les inscriptions sont fermées.'}[m]||(/at least/i.test(m)?'Mot de passe trop court (8 caractères minimum).':/rate limit|too many/i.test(m)?'Trop de tentatives ou d\'e-mails envoyés : réessayez dans quelques minutes.':/different from the old/i.test(m)?'Choisissez un mot de passe différent de l\'ancien.':/signups not allowed/i.test(m)?'Les inscriptions sont fermées.':/fetch|network/i.test(m)?'Connexion impossible : vérifiez votre réseau.':m));
+const gmsg=(t,ok)=>{const g=$('#gm');if(g){g.textContent=t||'';g.className=ok?'ok':'er'}};
+function gate(m,msg,ok){const g=$('#gate'),e0=$('#ae');if(e0)em=e0.value;if(!m){g.className='';g.innerHTML='';return}g.className='on';
+const f=(id,l,t,ac,v)=>`<label>${l}<input id="${id}" type="${t}" autocomplete="${ac}" value="${esc(v||'')}"></label>`,lk=(k,l)=>`<a onclick="gate('${k}')">${l}</a>`,
+fm=(k,h,l,x)=>`<form onsubmit="auth('${k}');return false" novalidate>${h}<p id="gm" class="${ok?'ok':'er'}">${esc(msg||'')}</p><button class="btn" id="ab" style="width:100%">${l}</button></form>${x||''}`,E=()=>f('ae','Adresse e-mail','email','email',em);
+const B={config:`<h2>Configuration requise</h2><p>Renseignez l'URL et la clé publique de votre projet Supabase dans <b>config.js</b>, puis redéployez le site (voir LISEZ-MOI.md).</p>`,
+login:'<h2>Connexion</h2>'+fm('login',E()+f('ap','Mot de passe','password','current-password'),'Se connecter',`<p>${lk('forgot','Mot de passe oublié ?')} · ${lk('signup','Créer un compte')}</p>`),
+signup:'<h2>Créer un compte</h2>'+fm('signup',E()+f('ap','Mot de passe (8 caractères minimum)','password','new-password')+f('ap2','Confirmer le mot de passe','password','new-password'),'Créer mon compte',`<p>${lk('login','J\'ai déjà un compte')}</p>`),
+forgot:'<h2>Mot de passe oublié</h2><p>Nous vous enverrons un lien de réinitialisation.</p>'+fm('forgot',E(),'Envoyer le lien',`<p>${lk('login','Retour à la connexion')}</p>`),
+reset:'<h2>Nouveau mot de passe</h2>'+fm('reset',f('ap','Nouveau mot de passe (8 caractères minimum)','password','new-password')+f('ap2','Confirmer le mot de passe','password','new-password'),'Enregistrer le mot de passe'),
+sent:`<h2>Vérifiez vos e-mails</h2><p>${esc(msg)}</p><p>${lk('login','Retour à la connexion')}</p>`,load:'<p>Chargement de vos idées…</p>',
+err:`<h2>Chargement impossible</h2><p class="er">${esc(msg)}</p><button class="btn" onclick="loadCloud()">Réessayer</button> <button class="btn o" onclick="out()">Se déconnecter</button>`}[m];
+g.innerHTML=`<div class="gc"><div class="logo">IDEAYBA<small>Mon espace d'idées</small></div>${B}</div>`}
+async function auth(k){const e=(($('#ae')||{}).value||'').trim(),p=($('#ap')||{}).value||'',b=$('#ab'),A=sb.auth,url=location.origin+location.pathname;
+if(k!=='reset'&&!/^\S+@\S+\.\S+$/.test(e))return gmsg('Adresse e-mail invalide.');
+if(k!=='forgot'&&!p)return gmsg('Saisissez votre mot de passe.');
+if((k==='signup'||k==='reset')&&(p.length<8||p!==$('#ap2').value))return gmsg(p.length<8?'Mot de passe trop court (8 caractères minimum).':'Les deux mots de passe ne correspondent pas.');
+b.disabled=true;gmsg('');
+try{if(k==='login'){const{data,error}=await A.signInWithPassword({email:e,password:p});if(error)throw error;start(data.session)}
+else if(k==='signup'){const{data,error}=await A.signUp({email:e,password:p,options:{emailRedirectTo:url}});if(error)throw error;
+if(data.session)start(data.session);else if(data.user&&data.user.identities&&!data.user.identities.length)gmsg('Un compte existe déjà avec cette adresse : connectez-vous ou réinitialisez votre mot de passe.');else gate('sent','Un e-mail de confirmation a été envoyé à '+e+'. Cliquez sur le lien qu\'il contient, puis connectez-vous.')}
+else if(k==='forgot'){const{error}=await A.resetPasswordForEmail(e,{redirectTo:url});if(error&&/rate|limit/i.test(error.message))throw error;gate('sent','Si un compte existe pour '+e+', un e-mail de réinitialisation vient d\'être envoyé.')}
+else{const{error}=await A.updateUser({password:p});if(error)throw error;REC=false;history.replaceState(null,'',location.pathname);const{data}=await A.getSession();if(data.session)start(data.session);else gate('login','Mot de passe modifié. Connectez-vous.',1)}}
+catch(x){gmsg(tr(x.message||String(x)));if(b)b.disabled=false}}
+function start(s){if(U&&U.id===s.user.id)return;U=s.user;loadCloud()}
+const out=()=>sb.auth.signOut().then(()=>location.reload());
+async function loadCloud(){gate('load');const{data,error}=await sb.from('ideas').select('*');if(error)return gate('err',error.message);
+S.items=norm((data||[]).map(r=>({...r.data,id:r.id,type:r.type,fav:r.favorite,arch:r.archived,created:r.created_at,updated:r.updated_at})));snap=new Map(S.items.map(x=>[x.id,JSON.stringify(x)]));refd=paths(S.items);
+const m=U.user_metadata||{};$('#me').innerHTML=`<div>${esc(m.full_name||m.name||'Mon compte')}</div><small>${esc(U.email||'')}</small><button class="nv" onclick="out()">Se déconnecter</button>`;gate();render();moveImgs()}
+async function boot(){if(!sb)return gate('config');sb.auth.onAuthStateChange((ev,ss)=>{if(ev==='SIGNED_OUT'&&U)location.reload();else if(ev==='PASSWORD_RECOVERY')gate('reset');else if(ev==='SIGNED_IN'&&ss&&!REC)setTimeout(()=>start(ss),0)});
+const{data:{session}}=await sb.auth.getSession();if(REC)return gate('reset');if(HE)return gate('login','Ce lien a expiré ou est invalide : demandez-en un nouveau.');if(!session)return gate('login');start(session)}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2200)}
+const modal=h=>{$('#mo').innerHTML='<div class="md">'+h+'</div>';$('#mo').classList.add('on')},closeM=()=>$('#mo').classList.remove('on');
+function ask(msg,ok='Confirmer'){return new Promise(r=>{window._r=v=>{closeM();r(v)};modal(`<h2>Confirmation</h2><p>${msg}</p><div class="act"><button class="btn o" onclick="_r(false)">Annuler</button><button class="btn" onclick="_r(true)">${ok}</button></div>`)})}
+const fd=d=>new Date(d).toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'}),fdt=d=>new Date(d).toLocaleString('fr-FR',{dateStyle:'long',timeStyle:'short'});
+const catOf=x=>x.cat||x.domain||'',short=s=>(s||'').length>110?s.slice(0,110)+'…':s||'',find=id=>S.items.find(i=>i.id===id);
+function txt(x){return[x.title,x.desc,x.notes,x.problem,x.solution,x.target,x.model,x.links,x.amount,btxt(x)].join(' ').toLowerCase()}
+function list(){let a=S.items.filter(x=>view==='arch'?x.arch:!x.arch&&(view==='fav'?x.fav:view==='all'||x.type===view));
+const q=F.q.trim().toLowerCase(),d=F.date?Date.now()-F.date*864e5:0;
+return a.filter(x=>(!q||txt(x).includes(q))&&(!F.type||x.type===F.type)&&(!F.cat||catOf(x)===F.cat)&&(!F.status||x.status===F.status)&&(!F.pri||x.priority===F.pri)&&(!d||new Date(x.created)>d)).sort((a,b)=>b.updated.localeCompare(a.updated))}
+const prio=x=>x.priority||x.potential;
+function pct(x){if(Array.isArray(x.steps)&&x.steps.length)return Math.round(x.steps.filter(s=>s.d).length/x.steps.length*100);return x.progress||0}
+const goalCard=x=>{const p=pct(x);return `<div class="card gcard" onclick="editGoal('${x.id}')">${x.cover&&x.cover.path?`<img class="gcov" data-p="${esc(x.cover.path)}" alt="">`:''}<div class="ch"><span class="tg">${esc(x.cat)||'Objectif de vie'}</span><button class="star" onclick="event.stopPropagation();fav('${x.id}')" aria-label="Favori">${x.fav?'★':'☆'}</button></div><h3>${esc(x.title)}</h3><p>${esc(short(x.desc))}</p><div class="pbar"><i style="width:${p}%"></i></div><div class="meta"><span class="bd">${p}%</span>${x.status?`<span class="bd">${esc(x.status)}</span>`:''}${x.deadline?`<span class="bd c">${fd(x.deadline)}</span>`:''}${x.priority?`<span class="bd p">${esc(x.priority)}</span>`:''}</div></div>`};
+const card=x=>x.type==='goal'?goalCard(x):`<div class="card" onclick="open_('${x.id}')"><div class="ch"><span class="tg">${TY[x.type].l}</span><button class="star" onclick="event.stopPropagation();fav('${x.id}')" aria-label="Favori">${x.fav?'★':'☆'}</button></div><h3>${esc(x.title)}</h3><p>${esc(short(x.desc))}</p><div class="meta">${x.status?`<span class="bd">${esc(x.status)}</span>`:''}${prio(x)?`<span class="bd p">${esc(prio(x))}</span>`:''}${catOf(x)?`<span class="bd c">${esc(catOf(x))}</span>`:''}<span class="dt">${fd(x.updated)}</span></div></div>`;
+const grid=(a,m)=>a.length?`<div class="grid ${m||''}">${a.map(card).join('')}</div>`:'';
+function render(){$('#nav').innerHTML=NAV.map(([k,i,l])=>`<button class="nv ${(view==='proj'?'project':view)===k?'on':''}" onclick="go('${k}')"><span>${i}</span>${l}</button>`).join('');
+$('#main').innerHTML=view==='dash'?dash():view==='set'?sett():view==='proj'?projv():listv();hydrate()}
+function go(v){view=v;F={q:'',type:'',cat:'',status:'',pri:'',date:''};$('#q').value='';$('#sb').classList.remove('open');render();scrollTo(0,0)}
+function dash(){const I=S.items.filter(x=>!x.arch),n=k=>I.filter(x=>x.type===k).length;
+const G=I.filter(x=>x.type==='goal').sort((a,b)=>(a.deadline||'9999')<(b.deadline||'9999')?-1:(a.deadline||'9999')>(b.deadline||'9999')?1:0);
+const tile=(k,ic,l)=>`<button class="til" onclick="go('${k}')"><span class="tii">${ic}</span><b>${n(k)}</b><span>${l}</span></button>`;
+const soon=G.filter(g=>g.deadline&&g.status!=='Atteint').slice(0,3);
+return `<h1>Mon tableau de pilotage</h1><p>Vos objectifs de vie, toujours sous les yeux. Le reste de votre univers est à un clic.</p>
+<div class="tiles">${tile('project','💼','Projets & Business')}${tile('tech','💻','Idées de SaaS')}${tile('small','💡','Idées vives')}${tile('invest','💶','Investissements futurs')}</div>
+<div class="sec"><h2>🎯 Mes objectifs de vie</h2><button class="btn" onclick="editGoal(null)">+ Ajouter un objectif</button></div>
+${soon.length?`<div class="soon"><b>Bientôt :</b> ${soon.map(g=>`<span class="bd">${esc(g.title)} · ${fd(g.deadline)}</span>`).join(' ')}</div>`:''}
+${G.length?grid(G):'<div class="emp">Ce que vous voulez accomplir, où vous en êtes, ce qui arrive bientôt : ajoutez votre premier objectif de vie.</div>'}`}
+function listv(){const all=S.items,base=all.filter(x=>view==='arch'?x.arch:!x.arch),cats=[...new Set(base.map(catOf).filter(Boolean))].sort(),sts=[...new Set(Object.values(ST).flat())];
+const L=list(),o=(a,v)=>a.map(s=>`<option${s===v?' selected':''}>${esc(s)}</option>`).join(''),sel=(k,ph,arr)=>`<select onchange="F.${k}=this.value;render()"><option value="">${ph}</option>${o(arr,F[k])}</select>`;
+const ttl={all:'Toutes mes idées',goal:'Mes objectifs de vie',project:'Mes projets & Business',tech:'Idées de SaaS — Tech',small:'Mes idées vives',invest:'Investissements futurs',fav:'Mes favoris',arch:'Mes archives'}[view];
+const add=TY[view]?`<button class="btn" onclick="edit(null,'${view}')">+ ${TY[view].l}</button>`:'';
+return `<div class="sec" style="margin-top:0"><h1>${ttl}</h1>${add}</div><p>${L.length} résultat${L.length>1?'s':''}${view==='arch'?' · l\'archivage ne supprime jamais rien : vous pouvez tout restaurer':''}</p>
+${view==='small'?`<div class="cap"><input id="cq" placeholder="Une idée, en quelques mots…" onkeydown="if(event.key==='Enter')quickIdea()"><button class="btn" onclick="quickIdea()">💡 Capturer une idée</button></div>`:''}
+<div class="fl">${TY[view]?'':`<select onchange="F.type=this.value;render()"><option value="">Tous types</option>${Object.entries(TY).map(([k,t])=>`<option value="${k}"${F.type===k?' selected':''}>${t.l}</option>`).join('')}</select>`}${sel('cat','Toutes catégories',cats)}${sel('status','Tous statuts',sts)}${sel('pri','Toutes priorités',PR)}
+<select onchange="F.date=+this.value;render()"><option value="0">Toutes dates</option><option value="7"${F.date==7?' selected':''}>7 derniers jours</option><option value="30"${F.date==30?' selected':''}>30 derniers jours</option><option value="365"${F.date==365?' selected':''}>12 derniers mois</option></select>
+<button class="btn o" onclick="mode=mode==='grid'?'list':'grid';render()">${mode==='grid'?'☰ Vue liste':'▦ Vue cartes'}</button></div>
+${L.length?grid(L,mode==='list'?'list':''):`<div class="emp">${S.items.length?'Aucun résultat pour ces filtres.':'Rien ici pour l\'instant. Cliquez sur « + Nouvelle idée » pour commencer.'}</div>`}`}
+function chooser(){$('#sb').classList.remove('open');modal(`<h2>Nouvelle idée</h2><div class="ch3">${Object.entries(TY).map(([k,t])=>`<button onclick="edit(null,'${k}')"><b>${t.l}</b><small class="d">${{goal:'Un objectif de vie à atteindre, avec progression et étapes',project:'Business, startup, SaaS… avec fiche complète et éditeur riche',tech:'Une idée de SaaS ou de produit numérique à qualifier',small:'Une idée à capturer rapidement, avant de décider plus tard',invest:'Une piste d\'investissement à explorer pour plus tard'}[k]}</small></button>`).join('')}</div><div class="act"><button class="btn o" onclick="closeM()">Fermer</button></div>`)}
+function edit(id,type){const x=id?find(id):{type};if(x.type==='project')return info(id);if(x.type==='goal')return editGoal(id);cur={id,type:x.type};const T=TY[x.type];
+let h=`<h2>${id?'Modifier':'Nouveau'} — ${T.l}</h2><label>Titre<input id="f_title" value="${esc(x.title)}" placeholder="Le nom de votre idée"></label>`;
+h+=T.f.map(([k,l,kind,o])=>{const v=x[k]??(k==='status'?ST[x.type][0]:k==='priority'?'Moyenne':'');
+if(kind==='t')return`<label>${l}<input id="f_${k}" value="${esc(v)}"></label>`;
+if(kind==='a')return`<label>${l}<textarea id="f_${k}" rows="3">${esc(v)}</textarea></label>`;
+if(kind==='s')return`<label>${l}<select id="f_${k}">${k==='domain'?'<option value="">—</option>':''}${o.map(s=>`<option${s===v?' selected':''}>${s}</option>`).join('')}</select></label>`;
+const b=(c,n)=>`<button onmousedown="event.preventDefault();document.execCommand(${c})">${n}</button>`;
+return`<div class="lb">${l}</div><div class="tb">${b("'formatBlock',false,'h2'",'Titre')}${b("'formatBlock',false,'h3'",'Sous-titre')}${b("'formatBlock',false,'p'",'Paragraphe')}${b("'insertUnorderedList'",'• Liste')}${b("'insertOrderedList'",'1. Liste')}</div><div id="f_plan" class="ed" contenteditable="true">${clean(v)}</div>`}).join('');
+if(id)h+=`<p><small class="d">Créée le ${fdt(x.created)} · Modifiée le ${fdt(x.updated)}</small></p>`;
+h+=`<div class="act"><button class="btn" onclick="saveF()">Enregistrer</button><button class="btn o" onclick="closeM()">Annuler</button><span class="sp"></span>`;
+if(id)h+=`<button class="btn o" onclick="fav('${id}',1)">${x.fav?'★ Retirer des favoris':'☆ Favori'}</button>${(x.type==='small'||x.type==='tech')?`<button class="btn o" onclick="conv('${id}')">${x.type==='small'?'Développer en projet':'Transformer en projet'}</button>`:''}<button class="btn o" onclick="arch('${id}')">${x.arch?'Restaurer':'Archiver'}</button><button class="btn d" onclick="del('${id}')">Supprimer</button>`;
+modal(h+'</div>');setTimeout(()=>{const t=$('#f_title');t&&!id&&t.focus()},50)}
+let _gi=null,_gsteps=[],_gcover=null,_gDraftId=null;
+function quickIdea(){const v=$('#cq').value.trim();if(!v)return toast('Écrivez une idée d\'abord');S.items.push({id:uid(),type:'small',title:v,status:ST.small[0],priority:'Moyenne',fav:false,arch:false,created:now(),updated:now()});save();render();toast('Idée capturée')}
+function renderGSteps(){$('#g_steps').innerHTML=_gsteps.map((s,i)=>`<div class="ci"><input type="checkbox" ${s.d?'checked':''} onchange="_gsteps[${i}].d=this.checked"><input value="${esc(s.t)}" placeholder="Étape…" oninput="_gsteps[${i}].t=this.value" onkeydown="if(event.key==='Enter'){_gsteps.splice(${i+1},0,{t:'',d:false});renderGSteps()}"><button onclick="_gsteps.splice(${i},1);renderGSteps()" aria-label="Supprimer">✕</button></div>`).join('')}
+function gstepAdd(){_gsteps.push({t:'',d:false});renderGSteps()}
+function renderGPhoto(){$('#g_photo').innerHTML=_gcover&&_gcover.path?`<figure><img data-p="${esc(_gcover.path)}" alt="" style="max-width:220px"></figure><div class="act" style="margin:6px 0"><label class="btn o">Remplacer<input hidden type="file" accept="image/*" onchange="gimg(this)"></label><button class="btn d" onclick="_gcover=null;renderGPhoto()">Supprimer la photo</button></div>`:`<label class="drop">🖼️ Ajouter une photo<input hidden type="file" accept="image/*" onchange="gimg(this)"></label>`;hydrate()}
+async function gimg(inp){const f=inp.files[0];if(!f||!/^image\//.test(f.type))return;setSt('Envoi de l\'image…','w');const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1200/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);c.toBlob(async bl=>{try{const path=await upl(bl,{id:_gDraftId},{id:'cover'},'jpg');_gcover={path,name:f.name};renderGPhoto();setSt('','')}catch(e){upFail(e)}},'image/jpeg',.85)};im.onerror=()=>upFail('image illisible');im.src=r.result};r.readAsDataURL(f)}
+function editGoal(id){const x=id?find(id):{};_gi=id;_gDraftId=id||uid();_gsteps=(x.steps||[]).map(s=>({...s}));_gcover=x.cover?{...x.cover}:null;
+const photo=_gcover&&_gcover.path?`<figure><img data-p="${esc(_gcover.path)}" alt="" style="max-width:220px"></figure><div class="act" style="margin:6px 0"><label class="btn o">Remplacer<input hidden type="file" accept="image/*" onchange="gimg(this)"></label><button class="btn d" onclick="_gcover=null;renderGPhoto()">Supprimer la photo</button></div>`:`<label class="drop">🖼️ Ajouter une photo<input hidden type="file" accept="image/*" onchange="gimg(this)"></label>`;
+modal(`<h2>${id?'Modifier l\'objectif':'Nouvel objectif de vie'}</h2>
+<label>Titre<input id="g_title" value="${esc(x.title)}" placeholder="Ce que je veux accomplir"></label>
+<label>Description<textarea id="g_desc" rows="3">${esc(x.desc)}</textarea></label>
+<label>Catégorie<input id="g_cat" value="${esc(x.cat)}" placeholder="Santé, carrière, finances…"></label>
+<label>Échéance<input id="g_deadline" type="date" value="${esc(x.deadline)}"></label>
+<label>Priorité<select id="g_priority">${PR.map(p=>`<option${p===(x.priority||'Moyenne')?' selected':''}>${p}</option>`).join('')}</select></label>
+<label>Statut<select id="g_status">${ST.goal.map(s=>`<option${s===(x.status||ST.goal[0])?' selected':''}>${s}</option>`).join('')}</select></label>
+<div class="lb">Photo (facultatif)</div><div id="g_photo">${photo}</div>
+<div class="lb">Étapes</div><div id="g_steps"></div><button class="btn o" onclick="gstepAdd()">+ Étape</button>
+<label style="margin-top:10px">Progression manuelle (%) — utilisée seulement sans étape<input id="g_progress" type="number" min="0" max="100" value="${x.progress||0}"></label>
+<label>Notes<textarea id="g_notes" rows="3">${esc(x.notes)}</textarea></label>
+${id?`<p><small class="d">Créé le ${fdt(x.created)} · Modifié le ${fdt(x.updated)}</small></p>`:''}
+<div class="act"><button class="btn" onclick="saveGoal()">Enregistrer</button><button class="btn o" onclick="closeM()">Annuler</button><span class="sp"></span>${id?`<button class="btn o" onclick="fav('${id}',1)">${x.fav?'★ Retirer des favoris':'☆ Favori'}</button><button class="btn o" onclick="arch('${id}')">${x.arch?'Restaurer':'Archiver'}</button><button class="btn d" onclick="del('${id}')">Supprimer</button>`:''}</div>`);
+renderGSteps();hydrate();setTimeout(()=>{const t=$('#g_title');t&&!id&&t.focus()},50)}
+function saveGoal(){const t=$('#g_title').value.trim();if(!t)return toast('Ajoutez un titre');
+const o={title:t,desc:$('#g_desc').value.trim(),cat:$('#g_cat').value.trim(),deadline:$('#g_deadline').value,priority:$('#g_priority').value,status:$('#g_status').value,notes:$('#g_notes').value.trim(),steps:_gsteps.filter(s=>s.t.trim()),cover:_gcover||null,progress:Math.max(0,Math.min(100,+$('#g_progress').value||0))};
+if(_gi)Object.assign(find(_gi),o,{updated:now()});else S.items.push({id:_gDraftId,type:'goal',fav:false,arch:false,created:now(),updated:now(),...o});
+save();closeM();render();toast('Modifications appliquées')}
+function saveF(){const t=$('#f_title').value.trim();if(!t)return toast('Ajoutez un titre');const o={title:t};TY[cur.type].f.forEach(([k,,kind])=>{o[k]=kind==='p'?clean($('#f_'+k).innerHTML):$('#f_'+k).value.trim()});
+if(cur.id)Object.assign(find(cur.id),o,{updated:now()});else S.items.push({id:uid(),type:cur.type,fav:false,arch:false,created:now(),updated:now(),...o});save();closeM();render();toast('Modifications appliquées')}
+function fav(id,close){const x=find(id);x.fav=!x.fav;save();close&&closeM();render();toast(x.fav?'Ajouté aux favoris':'Retiré des favoris')}
+function arch(id){const x=find(id);x.arch=!x.arch;x.updated=now();save();closeM();if(view==='proj')view='project';render();toast(x.arch?'Archivée (rien n\'est supprimé)':'Restaurée ✓')}
+async function del(id){if(await ask('Supprimer définitivement cette idée ? Cette action est irréversible. (Vous pouvez plutôt l\'archiver.)','Supprimer')){S.items=S.items.filter(i=>i.id!==id);save();if(view==='proj')view='project';render();toast('Supprimée')}}
+function conv(id){const x=find(id);Object.assign(x,{type:'project',cat:x.cat||'',status:'Idée',updated:now()});delete x.priority;delete x.potential;save();closeM();go('project');toast('Idée transformée en projet ✓')}
+function sett(){const c=S.items.length,a=S.items.filter(x=>x.arch).length,bk=(()=>{try{return!!localStorage.getItem(K+'.bk')}catch(e){return false}})();
+return`<h1>Paramètres</h1><p>Sauvegarde et données</p>${mem?'<div class="warn">⚠ Le stockage du navigateur est bloqué : vos idées ne survivront pas à la fermeture de la page. Exportez-les.</div>':''}
+<div class="box"><h3>Mes données</h3><p><b>${c}</b> idée${c>1?'s':''} enregistrée${c>1?'s':''} (dont ${a} archivée${a>1?'s':''}).</p><p>Vos idées sont enregistrées dans votre compte en ligne (Supabase) et visibles uniquement depuis votre connexion Google. Un export JSON reste conseillé comme copie de sécurité.</p></div>
+<div class="box"><h3>Exporter</h3><div class="act" style="margin:0"><button class="btn" onclick="expJ()">Tout exporter (JSON)</button><button class="btn o" onclick="expC()">Projets (CSV)</button></div></div>
+<div class="box"><h3>Importer une sauvegarde JSON</h3><p>Le fichier est vérifié avant tout changement. L'état actuel est conservé pour pouvoir l'annuler.</p><input type="file" id="imf" accept=".json,application/json" onchange="imp(this)">${bk?'<div class="act"><button class="btn o" onclick="undo()">Annuler le dernier import</button></div>':''}</div>`}
+async function dl(name,text){let d=null;try{d=window.claude&&await claude.use('downloads')}catch(e){}
+if(d)try{await d.save({filename:name,data:text});return toast('Fichier prêt ✓')}catch(e){}
+try{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text]));a.download=name;document.body.appendChild(a);a.click();a.remove();return toast('Fichier prêt ✓')}catch(e){}
+modal(`<h2>Copie manuelle</h2><p>Le téléchargement direct n'a pas abouti. Copiez ce contenu dans un fichier <b>${name}</b> :</p><textarea readonly rows="10" onclick="this.select()">${esc(text)}</textarea><div class="act"><button class="btn" onclick="closeM()">Fermer</button></div>`)}
+const expJ=()=>dl('ideayba-sauvegarde-'+now().slice(0,10)+'.json',JSON.stringify({app:'ideayba',version:1,exported:now(),items:S.items},null,2));
+function expC(){const P=S.items.filter(x=>x.type==='project').map(p=>({...p,plan:btxt(p)})),cols=[['title','Titre'],['desc','Description'],['problem','Problème'],['solution','Solution'],['target','Public cible'],['model','Modèle économique'],['budget','Budget'],['cat','Catégorie'],['status','Statut'],['created','Créé le'],['updated','Modifié le'],['fav','Favori'],['arch','Archivé'],['links','Liens'],['notes','Notes'],['plan','Business plan']];
+const c=v=>{v=String(v??'');if(/<[a-z]/i.test(v))v=v.replace(/<\/(h2|h3|p|li|div)>/gi,'\n').replace(/<[^>]*>/g,'');if(/^[=+\-@]/.test(v))v="'"+v;return'"'+v.replace(/"/g,'""')+'"'};
+if(!P.length)return toast('Aucun projet à exporter');dl('ideayba-projets.csv','\ufeff'+[cols.map(x=>c(x[1])).join(','),...P.map(p=>cols.map(([k])=>c(p[k])).join(','))].join('\n'))}
+async function imp(inp){const f=inp.files[0];if(!f)return;let o;try{o=JSON.parse(await f.text());if(o.app!=='ideayba'||!Array.isArray(o.items))throw 0}catch(e){inp.value='';return toast('Fichier invalide : import annulé')}
+const items=norm(o.items);if(!items.length)return toast('Aucune idée valide dans ce fichier');
+const merge=await ask(`Ce fichier contient <b>${items.length}</b> idée(s). <br><br><b>Fusionner</b> : ajoute les nouvelles et garde la version la plus récente de chaque idée (rien n'est supprimé).<br><b>Remplacer</b> : remplace tout votre contenu actuel par celui du fichier.`,'Fusionner');
+let rep=false;if(!merge){rep=await ask('Remplacer TOUTES vos idées actuelles par celles du fichier ? L\'état actuel sera conservé pour annulation.','Remplacer');if(!rep){inp.value='';return}}
+try{localStorage.setItem(K+'.bk',JSON.stringify(S.items))}catch(e){}
+if(rep)S.items=items;else items.forEach(n=>{const e=find(n.id);if(!e)S.items.push(n);else if(n.updated>e.updated)Object.assign(e,n)});save();render();toast('Import terminé, envoi en cours…');moveImgs()}
+async function undo(){if(!await ask('Revenir à l\'état d\'avant le dernier import ?','Revenir'))return;try{S.items=norm(JSON.parse(localStorage.getItem(K+'.bk')));save();render();toast('État restauré, envoi en cours…')}catch(e){toast('Impossible de restaurer')}}
+
+let pid=null;const open_=id=>find(id).type==='project'?proj(id):find(id).type==='goal'?editGoal(id):edit(id);
+function proj(id){pid=id;view='proj';F={q:'',type:'',cat:'',status:'',pri:'',date:''};$('#q').value='';$('#sb').classList.remove('open');render();scrollTo(0,0)}
+function info(id){const x=id?find(id):{};window._ii=id;modal(`<h2>${id?'Modifier le projet':'Nouveau projet & Business'}</h2><label>Titre<input id="i_t" value="${esc(x.title)}" placeholder="Le nom du projet"></label><label>Courte description<textarea id="i_d" rows="3">${esc(x.desc)}</textarea></label><label>Catégorie<input id="i_c" value="${esc(x.cat)}"></label><label>Statut<select id="i_s">${ST.project.map(s=>`<option${s===(x.status||'Idée')?' selected':''}>${s}</option>`).join('')}</select></label>${id?`<p><small class="d">Créé le ${fdt(x.created)} · Modifié le ${fdt(x.updated)}</small></p>`:''}<div class="act"><button class="btn" onclick="saveI()">Enregistrer</button><button class="btn o" onclick="closeM()">Annuler</button><span class="sp"></span>${id?`<button class="btn d" onclick="del('${id}')">Supprimer</button>`:''}</div>`)}
+function saveI(){const t=$('#i_t').value.trim();if(!t)return toast('Ajoutez un titre');const o={title:t,desc:$('#i_d').value.trim(),cat:$('#i_c').value.trim(),status:$('#i_s').value};let id=_ii;const nw=!id;if(id)Object.assign(find(id),o,{updated:now()});else{id=uid();S.items.push({id,type:'project',fav:false,arch:false,created:now(),updated:now(),blocks:[],...o})}save();closeM();if(nw)proj(id);else render();toast('Modifications appliquées')}
+const BT=[['text','📝','Texte'],['image','🖼️','Image'],['table','📊','Tableau'],['callout','📦','Encadré'],['checklist','✅','Liste de tâches'],['link','🔗','Lien'],['file','📁','Fichier'],['divider','➖','Séparateur']],KD={idea:'💡 Idée',warn:'⚠️ Attention',goal:'🎯 Objectif',info:'📌 Information'};
+const P_=()=>find(pid),B_=id=>P_().blocks.find(b=>b.id===id),safeU=u=>/^https?:\/\//i.test(u||'');
+function touch(){P_().updated=now();clearTimeout(touch.t);touch.t=setTimeout(save,400)}
+const ub=(id,k,v)=>{B_(id)[k]=v;touch()},ubh=(id,el)=>ub(id,'html',clean(el.innerHTML));
+function projv(){const x=P_();if(!x)return'';return`<button class="btn o" onclick="go('project')">← Mes projets</button>
+<div class="ph"><div class="meta"><span class="bd">${esc(x.status)}</span>${x.cat?`<span class="bd c">${esc(x.cat)}</span>`:''}${x.arch?'<span class="bd p">Archivé</span>':''}</div><h1>${esc(x.title)}</h1><p class="pd">${esc(x.desc)}</p><small class="d">Créé le ${fdt(x.created)} · Modifié le ${fdt(x.updated)}</small>
+<div class="act"><button class="btn o" onclick="fav('${x.id}')">${x.fav?'★ Favori':'☆ Favori'}</button><button class="btn o" onclick="info('${x.id}')">Modifier</button><button class="btn o" onclick="arch('${x.id}')">${x.arch?'Restaurer':'Archiver'}</button></div></div>
+<div class="etb"><div class="addw"><button class="btn" onclick="$('#am').classList.toggle('on')">+ Ajouter un bloc</button><div id="am" class="am">${BT.map(([k,i,l])=>`<button onclick="addB('${k}')">${i} ${l}</button>`).join('')}</div></div>
+${[["bold","<b>G</b>"],["italic","<i>I</i>"],["formatBlock:h2","T1"],["formatBlock:h3","T2"],["insertUnorderedList","•"],["insertOrderedList","1."],["formatBlock:blockquote","❝"]].map(([c,l])=>`<button onmousedown="event.preventDefault();cmd('${c}')">${l}</button>`).join('')}<button onmousedown="event.preventDefault();lnk()">🔗</button></div>
+<div id="bl">${bls(x)}</div>`}
+const bls=x=>x.blocks.length?x.blocks.map(blk).join(''):'<div class="emp">Cet espace est vide. Cliquez sur « + Ajouter un bloc » pour commencer votre page.</div>';
+function rb(s){$('#bl').innerHTML=bls(P_());$('#am').classList.remove('on');hydrate();if(s)$('#bl').lastElementChild.scrollIntoView({behavior:'smooth',block:'center'})}
+function inEd(){const s=getSelection();return s.rangeCount&&s.anchorNode&&s.anchorNode.parentElement&&s.anchorNode.parentElement.closest('.ed')}
+function cmd(c){if(!inEd())return toast('Cliquez d\'abord dans un bloc de texte');const[a,v]=c.split(':');document.execCommand(a,false,v)}
+function lnk(){const e=inEd();if(!e)return toast('Sélectionnez du texte dans un bloc');window._sel=[getSelection().getRangeAt(0).cloneRange(),e];modal(`<h2>Ajouter un lien</h2><label>Adresse (https://…)<input id="lu" placeholder="https://"></label><div class="act"><button class="btn o" onclick="closeM()">Annuler</button><button class="btn" onclick="lnk2()">Insérer</button></div>`)}
+function lnk2(){const u=$('#lu').value.trim();if(!safeU(u))return toast('Adresse invalide (https://…)');closeM();const[r,el]=_sel;el.focus();const s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('createLink',false,u);el.dispatchEvent(new Event('input'))}
+function addB(t){const d={text:{html:'<p><br></p>'},image:{src:'',caption:''},table:{title:'',rows:[['Colonne 1','Colonne 2'],['','']]},callout:{kind:'idea',html:'<p><br></p>'},checklist:{title:'',items:[{t:'',d:false}]},link:{title:'',url:'',desc:''},file:{name:'',size:0},divider:{}}[t];P_().blocks.push({id:uid(),type:t,...d});touch();rb(1)}
+function mv(id,d){const a=P_().blocks,i=a.findIndex(b=>b.id===id),j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];touch();rb()}
+function dup(id){const a=P_().blocks,i=a.findIndex(b=>b.id===id);a.splice(i+1,0,{...JSON.parse(JSON.stringify(a[i])),id:uid()});touch();rb();toast('Bloc dupliqué')}
+async function rm(id){if(await ask('Supprimer ce bloc ?','Supprimer')){P_().blocks=P_().blocks.filter(b=>b.id!==id);touch();rb()}}
+function dnd(e,to){e.preventDefault();const a=P_().blocks,f=a.findIndex(b=>b.id===window._dg),t=a.findIndex(b=>b.id===to);if(f<0||f===t)return rb();const[m]=a.splice(f,1);a.splice(t,0,m);touch();rb()}
+const blk=b=>`<div class="bk" data-id="${b.id}" oncontextmenu="cm(event,'${b.id}')" ontouchstart="lp(event,'${b.id}')" ontouchend="clearTimeout(lp.t)" ontouchmove="clearTimeout(lp.t)">${BR[b.type](b)}</div>`;
+function lp(e,id){clearTimeout(lp.t);const t=e.touches[0],el=e.target;lp.t=setTimeout(()=>cm({target:el},id,t.clientX,t.clientY),600)}
+function hideCm(){$('#cmn').classList.remove('on')}
+function cm(e,id,x,y){e.preventDefault&&e.preventDefault();if(x==null&&Date.now()-(cm.t||0)<900)return;cm.t=Date.now();const b=B_(id),bl=P_().blocks,i=bl.indexOf(b),T=e.target.closest?e.target:e.target.parentElement,c=T&&T.closest('td,th'),k=T&&T.closest('.ci'),it=[];
+if(b.type==='table'){it.push(['Ajouter une ligne',`ta('${id}','r')`],['Ajouter une colonne',`ta('${id}','c')`]);if(c)it.push(['Supprimer cette ligne',`tr_('${id}',${c.parentElement.rowIndex})`,1],['Supprimer cette colonne',`tc('${id}',${c.cellIndex})`,1])}
+if(b.type==='checklist'){const n=k?[...k.parentElement.querySelectorAll('.ci')].indexOf(k):-1;it.push(['Ajouter une tâche',`ca('${id}',${n<0?b.items.length:n+1})`]);if(k)it.push(['Supprimer cette tâche',`cr('${id}',${n})`,1])}
+if(b.type==='image'&&(b.src||b.path))it.push(['Remplacer l\'image',`pickImg('${id}')`],['Supprimer l\'image',`setB('${id}',{src:'',path:''});rb()`,1]);
+it.push(['Dupliquer ce bloc',`dup('${id}')`]);it.push(['Supprimer ce bloc',`rm('${id}')`,1]);
+const m=$('#cmn');m.innerHTML=it.map(([l,f,d])=>`<button class="${d?'x':''}" onclick="hideCm();${f}">${l}</button>`).join('');m.classList.add('on');
+const px=x??e.clientX,py=y??e.clientY;m.style.left=Math.max(8,Math.min(px,innerWidth-m.offsetWidth-8))+'px';m.style.top=Math.max(8,Math.min(py,innerHeight-m.offsetHeight-8))+'px'}
+document.addEventListener('click',hideCm);document.addEventListener('keydown',e=>e.key==='Escape'&&hideCm());addEventListener('scroll',hideCm,true);
+function pickImg(id){const i=document.createElement('input');i.type='file';i.accept='image/*';i.onchange=()=>img(id,i);i.click()}
+function ca(id,pos){B_(id).items.splice(pos,0,{t:'',d:false});touch();rb();const r=document.querySelectorAll('[data-id="'+id+'"] .ci input:not([type=checkbox])')[pos];r&&r.focus()}
+const inp=(id,k,v,ph,c='')=>`<input class="${c}" placeholder="${ph}" value="${esc(v)}" oninput="ub('${id}','${k}',this.value)">`,imgIn=(id,l)=>`<label class="drop">${l}<input hidden type="file" accept="image/*" onchange="img('${id}',this)"></label>`;
+const BR={text:b=>`<div class="ed tx" contenteditable="true" data-ph="Écrivez ici…" oninput="ubh('${b.id}',this)">${clean(b.html)}</div>`,
+callout:b=>`<div class="co ${b.kind}"><select onchange="ub('${b.id}','kind',this.value);rb()">${Object.entries(KD).map(([k,l])=>`<option value="${k}"${k===b.kind?' selected':''}>${l}</option>`).join('')}</select><div class="ed" contenteditable="true" oninput="ubh('${b.id}',this)">${clean(b.html)}</div></div>`,
+image:b=>(b.src||b.path)?`<figure>${b.path?`<img data-p="${esc(b.path)}" alt="">`:`<img src="${esc(b.src)}" alt="">`}${inp(b.id,'caption',b.caption,'Légende (facultatif)','cp')}</figure>`:imgIn(b.id,'🖼️ Importer une image'),
+table:b=>`${inp(b.id,'title',b.title,'Titre du tableau','tt')}<div class="tw"><table>${b.rows.map((r,i)=>{const t=i?'td':'th';return`<tr>${r.map((v,c)=>`<${t}><input value="${esc(v)}" oninput="cell('${b.id}',${i},${c},this.value)"></${t}>`).join('')}</tr>`}).join('')}</table></div>`,
+checklist:b=>`${inp(b.id,'title',b.title,'Titre de la liste','tt')}${b.items.map((it,i)=>`<div class="ci"><input type="checkbox" ${it.d?'checked':''} onchange="ci('${b.id}',${i},'d',this.checked);this.nextElementSibling.classList.toggle('dn',this.checked)"><input class="${it.d?'dn':''}" placeholder="Tâche…" value="${esc(it.t)}" oninput="ci('${b.id}',${i},'t',this.value)" onkeydown="if(event.key==='Enter'){ca('${b.id}',${i+1});return false}"></div>`).join('')}`,
+link:b=>`<div class="lk">${inp(b.id,'title',b.title,'Titre du lien')}<input placeholder="https://…" value="${esc(b.url)}" onchange="ub('${b.id}','url',this.value.trim());rb()">${inp(b.id,'desc',b.desc,'Description (facultatif)')}${safeU(b.url)?`<a class="btn o" style="text-align:center;text-decoration:none" href="${esc(b.url)}" target="_blank" rel="noopener noreferrer">Ouvrir ↗</a>`:''}</div>`,
+file:b=>`${b.name?`<div class="fi">📁 <b>${esc(b.name)}</b> <small class="d">${Math.ceil(b.size/1024)} Ko</small>${b.path?` · <a href="#" onclick="dlf('${b.id}');return false">Télécharger</a>`:''}</div>`:''}<label class="drop">${b.name?'Remplacer le fichier':'📁 Joindre un fichier'}<input hidden type="file" onchange="fl('${b.id}',this)"></label>`,
+divider:()=>'<hr class="dv">'};
+const cell=(id,r,c,v)=>{B_(id).rows[r][c]=v;touch()},ci=(id,i,k,v)=>{B_(id).items[i][k]=v;touch()};
+function ta(id,k){const b=B_(id);if(k==='r')b.rows.push(b.rows[0].map(()=>''));else b.rows.forEach(r=>r.push(''));touch();rb()}
+function tc(id,c){const b=B_(id);if(b.rows[0].length>1){b.rows.forEach(r=>r.splice(c,1));touch();rb()}}
+function tr_(id,i){const b=B_(id);if(b.rows.length>1){b.rows.splice(i,1);touch();rb()}}
+function cr(id,i){B_(id).items.splice(i,1);touch();rb()}
+const BK='ideayba-files',sigc=new Map();
+const set=(x,b,o)=>{Object.assign(b,o);x.updated=now();save();if(view==='proj'&&pid===x.id)rb()},setB=(id,o)=>set(P_(),B_(id),o);
+async function upl(file,x,b,ext){ext=ext||((file.name||'').split('.').pop()||'bin').replace(/[^\w]/g,'').slice(0,8)||'bin';const path=`${U.id}/${x.id}/${b.id}-${uid()}.${ext}`;const{error}=await sb.storage.from(BK).upload(path,file,{contentType:file.type||'application/octet-stream',upsert:false});if(error)throw error;return path}
+const upFail=e=>{setSt('','');modal(`<h2>Envoi impossible</h2><p>Le fichier n'a pas été enregistré : ${esc(e.message||e)}</p><div class="act"><button class="btn" onclick="closeM()">Fermer</button></div>`)};
+async function fl(id,inp){const f=inp.files[0];if(!f)return;if(f.size>10485760)return upFail('taille maximale : 10 Mo');const x=P_(),b=B_(id);setSt('Envoi du fichier…','w');try{const path=await upl(f,x,b);set(x,b,{path,name:f.name,size:f.size,mime:f.type||''});toast('Fichier envoyé')}catch(e){upFail(e)}}
+function img(id,inp){const f=inp.files[0];if(!f||!/^image\//.test(f.type))return;const x=P_(),b=B_(id),r=new FileReader();setSt('Envoi de l\'image…','w');r.onload=()=>{const i=new Image();i.onload=()=>{const k=Math.min(1,1600/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=i.width*k;c.height=i.height*k;c.getContext('2d').drawImage(i,0,0,c.width,c.height);c.toBlob(async bl=>{try{const path=await upl(bl,x,b,'jpg');set(x,b,{path,name:f.name,src:''});toast('Image envoyée')}catch(e){upFail(e)}},'image/jpeg',.85)};i.onerror=()=>upFail('image illisible');i.src=r.result};r.readAsDataURL(f)}
+async function moveImgs(){for(const x of S.items)for(const b of x.blocks||[])if(b.type==='image'&&/^data:image\//.test(b.src||'')){try{const bl=await(await fetch(b.src)).blob(),path=await upl(bl,x,b,'jpg');set(x,b,{path,src:''})}catch(e){console.error(e);setSt('⚠ Des images n\'ont pas pu être envoyées — cliquer pour réessayer','er');return false}}return true}
+async function hydrate(){if(!sb||!U)return;try{const els=[...document.querySelectorAll('img[data-p]')].filter(i=>!i.getAttribute('src')),need=[...new Set(els.map(i=>i.dataset.p))].filter(p=>!sigc.has(p)||sigc.get(p).e<Date.now());if(need.length){const{data}=await sb.storage.from(BK).createSignedUrls(need,3600);(data||[]).forEach(d=>d.signedUrl&&sigc.set(d.path,{u:d.signedUrl,e:Date.now()+3.4e6}))}els.forEach(i=>{const c=sigc.get(i.dataset.p);if(c)i.src=c.u})}catch(e){console.error(e)}}
+async function dlf(id){const b=B_(id),{data,error}=await sb.storage.from(BK).createSignedUrl(b.path,60,{download:b.name||true});if(error||!data)return toast('Téléchargement impossible');location.assign(data.signedUrl)}
+boot();
+</script></body></html>
