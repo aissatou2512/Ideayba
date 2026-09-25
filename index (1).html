@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#800F2F">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="IDEAYBA">
 <title>IDEAYBA</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -315,4 +322,5 @@ async function moveImgs(){for(const x of S.items)for(const b of x.blocks||[])if(
 async function hydrate(){if(!sb||!U)return;try{const els=[...document.querySelectorAll('img[data-p]')].filter(i=>!i.getAttribute('src')),need=[...new Set(els.map(i=>i.dataset.p))].filter(p=>!sigc.has(p)||sigc.get(p).e<Date.now());if(need.length){const{data}=await sb.storage.from(BK).createSignedUrls(need,3600);(data||[]).forEach(d=>d.signedUrl&&sigc.set(d.path,{u:d.signedUrl,e:Date.now()+3.4e6}))}els.forEach(i=>{const c=sigc.get(i.dataset.p);if(c)i.src=c.u})}catch(e){console.error(e)}}
 async function dlf(id){const b=B_(id),{data,error}=await sb.storage.from(BK).createSignedUrl(b.path,60,{download:b.name||true});if(error||!data)return toast('Téléchargement impossible');location.assign(data.signedUrl)}
 boot();
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}
 </script></body></html>

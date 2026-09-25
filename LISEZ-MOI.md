@@ -39,3 +39,24 @@ Dans Supabase, menu **Authentication** (les intitulés peuvent varier légèreme
    - `select relname, relrowsecurity from pg_class where relname = 'ideas';` doit afficher `true`.
    - `select tablename, policyname from pg_policies where tablename in ('ideas','objects');` doit lister 4 règles `ideas_*` et 4 règles `ideayba_files_*`.
 8. Si « ⚠ Échec de l'enregistrement » s'affiche, vos modifications ne sont pas en ligne : cliquez dessus pour réessayer avant de fermer la page.
+
+## 6. Installer IDEAYBA comme une application mobile (icône sur l'écran d'accueil)
+De nouveaux fichiers ont été ajoutés (`manifest.webmanifest`, `sw.js`, dossier `icons/`) pour que le site puisse s'installer comme une application, sans passer par un store. Cela ne change rien à Supabase ni à vos données.
+
+1. Ajoutez ces nouveaux fichiers à votre dépôt GitHub (mêmes commandes que la première fois, depuis le dossier ideayba-en-ligne) :
+```
+git add .
+git commit -m "Ajout de l'installation mobile (PWA)"
+git push
+```
+2. Vercel redéploie automatiquement en général en moins d'une minute après le push. Vérifiez sur votre tableau de bord Vercel que le déploiement est terminé.
+3. Sur votre téléphone, ouvrez l'adresse Vercel de votre site (pas l'ancienne version locale) :
+   - **Android (Chrome)** : un bandeau « Ajouter à l'écran d'accueil » apparaît en général tout seul après quelques secondes, ou via le menu ⋮ > « Installer l'application » / « Ajouter à l'écran d'accueil ».
+   - **iPhone (Safari uniquement, pas Chrome)** : bouton Partager (le carré avec une flèche) > « Sur l'écran d'accueil ».
+4. Une icône IDEAYBA (bordeaux, avec un petit accent rose) apparaît sur l'écran d'accueil. En l'ouvrant, l'application se lance en plein écran, sans barre d'adresse, comme une vraie application.
+5. Ce que ça change concrètement : une icône et un lancement en plein écran. Vos données restent exactement les mêmes qu'avant (même compte, même Supabase) : ce n'est pas une deuxième application séparée.
+
+### Limites à connaître
+- Ce n'est pas un fichier .apk ou .ipa : rien à publier sur le Play Store ou l'App Store avec cette méthode. Si vous voulez ça plus tard, il faudra un outil comme Capacitor, qui reprend ce même site.
+- Sur iPhone, l'icône ne s'affiche que si vous l'ajoutez depuis **Safari** (Chrome et les autres navigateurs iOS ne le proposent pas).
+- Après ce déploiement, si vous rechargez l'ancienne icône déjà installée avant cette mise à jour, il se peut qu'il faille la supprimer et la réinstaller une fois pour que la nouvelle icône et le mode plein écran s'appliquent.
